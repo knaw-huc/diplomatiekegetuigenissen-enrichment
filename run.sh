@@ -24,5 +24,5 @@ if ! find . -name "*.txt" -exec transcribedspeech2folia -o input/ {} \; ; then
     die "Conversion failed"
 fi
 for f in input/*.folia.xml; do 
-    frog --skip=pac -x "$f" -X "output/$(basename "$f")"  || die "Frog failed on $f"
+    frog --nostdout --skip=pac -x "$f" -X "output/$(basename "$f")"  || die "Frog failed on $f"
 done
